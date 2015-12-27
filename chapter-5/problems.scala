@@ -174,6 +174,7 @@ object problems {
 	// constructor. If not, the model year is set to -1 and the license plate to
 	// the empty string. Which constructor are you choosing as the primary constructor? Why?
 	object p8 {
+		// Not what they asked for, but it is the only sane answer.
 		class Car(
 			val manufacturer: String,
 			val model: String,
@@ -181,9 +182,23 @@ object problems {
 			var licensePlate: String = ""
 		)
 
+		class ObnoxiousCar(
+			val manufacturer: String,
+			val model: String,
+			val modelYear: Int,
+			var licensePlate: String
+		) {
+			def this(manufacturer: String, model: String) {
+				this(manufacturer, model, -1, "")
+			}
+			def this(manufacturer: String, model: String, modelYear: Int) {
+				this(manufacturer, model, modelYear, "")
+			}
+		}
+
 		def runTest {
 			val car = new Car("Toyota", "Corolla", 2014, "1AAA234")
-			println(car)
+			val obnoxiousCar = new ObnoxiousCar("Toyota", "Corolla", 2014, "1AAA234")
 		}
 	}
 
@@ -224,3 +239,4 @@ object problems {
 	}
 }
 problems.p10
+problems.p8.runTest
